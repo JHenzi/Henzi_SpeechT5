@@ -26,7 +26,7 @@ speech_1.wav
 speech_2.wav
 ```
 
-If you need a combined MP3 file of all the generated audio, you can use the `mp3.py` script to combine each of the files output by the model into a single MP3 file. You can run it like this;
+If you need a combined MP3 file of all the generated audio, you can use the `mp3.py` script to combine each of the files output by the model into a single MP3 file (`output.mp3`). You can run it like this;
 
 ```bash
 python3 mp3.py
