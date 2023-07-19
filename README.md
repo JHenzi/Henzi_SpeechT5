@@ -39,9 +39,9 @@ python3 mp3.py
 1. Write your script in `prompt.txt`
 2. Run `python3 app.py`
 3. Optionally preview `speech_#.wav` files
-4. Run `python3 mp3.py` to combine all the `speech_#.wav` files into a single `speech.mp3` file
-5. Optionally preview `speech.mp3` file
-6. Archive `prompt.txt`, `speech_#.wav` and `speech.mp3` files into their own directory.
+4. Run `python3 mp3.py` to combine all the `speech_#.wav` files into a single `output.mp3` file
+5. Optionally preview `output.mp3` file
+6. Archive `prompt.txt`, `speech_#.wav` and `output.mp3` files into their own directory.
 
 > A future version may simply create a directory for each run and archive the files there by UUID.
 
