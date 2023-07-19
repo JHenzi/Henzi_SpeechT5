@@ -1,0 +1,59 @@
+Today in this video, we'll be talking about Salesforce omni studio. We'll be covering the following topics in this video ...
+
+What is salesforce omni studio? 
+
+What is an Omniscript? 
+
+What are flex cards? 
+
+What are dataraptors? 
+
+And finally, what are integration procedures and when to use them.
+
+So, let's get started. Please don't forget, if you like the video, please do subscribe to our channel for more videos like this.
+
+Salesforce omnistudio is a digital tool that you can layer on top of Salesforce enabling various business processes and abilities Salesforce doesn't have out of the box.
+
+With salesforce omnistudio you can validate data as users are typing it, ensuring only clean and relevant data is saved to the database. You can also use omni studio to pull data from the platform and display it in different places. 
+
+Likewise, if we rely on the Integration Procedures feature, we can use omni studio to push data from the platform to other systems or even fetch data from a legacy back end system if it provides an A.P. eye.
+
+Omnistudio is a powerful tool that can be used to build complex business processes and workflows. It's a great tool for admins and developers alike.
+
+omnistudio has a way to configure it if you are not a salesforce developer as well as powerful abilities if extended with apex code.
+
+The addition of omni studio to your salesforce instance will ensure users are doing their jobs well and that the data in your system is clean and relevant. Your see are em is only as good as the data it holds.
+
+So let's get started in covering omnistudio, the omni script. The omni script is a great way to enable those things users really are asking for, but you can't do with the standard salesforce platform.
+
+Omni script is a little like Salesforce flow, it is a way to build a wizard like interface that guides users through a process. But with the entire omni studio suite you can enable much more by using omni script - we'll cover this in a moment.
+
+A salesforce admin, who is familiar with J S O N will be able to build an omni script. The omni script is a JSON file that is uploaded to the platform - that' it. It describes the user interface, the interactions and the overall experience. 
+
+When developing an omni script you can preview the guided flow as you're building it and get real time feedback, if possible, on features you're building as you build them. Given that it is a drag and drop tool, it allows for this flexibility.
+
+As you are designing too, you don't just get to include fields and drop them into a page. You can set fields of various types, including data types not typically supported by salesforce. You can even use input masks to control what goes into your platform.
+
+Along with the ability to create guided flows, the omniscript also allows you to pull and push data from the platform - or to and from other platforms. This is enabled by the dataraptors - these are powerful transformation tools for data inside and outside of Salesforce.
+
+When you design an omniscript, and say it interacts with the Account's contacts you can use a dataraptor to pull data from or push data to all of them at once or ones the user selects.
+
+The dataraptor is really the champion of omnistudio as it allows you to ferry data in and out of your omniscripts and our next feature - flex cards.
+
+Salesforce omnistudio flex cards are a visual component that helps you display data in a way that is more user friendly than the standard salesforce platform. If your users are asking for a different way to see data, or a different way to interact with it - especially groups of data - this tool is for you.
+
+With flex cards you can list all of the opportunities for an account and give them color-coding based on the opportunity's probability and stage - showing anything in jeopardy of not being won as red, and showing your won opportunities as green.
+
+With flex cards, honestly, the sky is the limit. You can display data in a way that makes sense to your users and helps them do their jobs better - if you can access the data from the cloud, it is able to be read and displayed on a flex card. Even better, data shown on a flex card is ready, like any lightning component, to be integrated into a third party site you need that data to display on.
+
+With omniscripts and flex cards working together you can present important and relevant information to the user in a friendly way as they need it. Consider a case where a user needs to see or know the contacts on the account as they are creating the opportunity - you can create an omniscript that handles this and use flex cards to show the user the contacts in an intuitive way.
+
+The final feature of omnistudio we'll cover is the integration procedures. This is a powerful tool that allows you to push data from the platform to other systems or pull data from other systems into the platform. It is a little different than a dataraptor - it is like a dataraptor on steroids.
+
+Consider that instead of doing just one thing in a transaction, you actually need to do more than one. You need to pull data from a legacy system, transform it and save it to salesforce in one fell swoop. This is a case for integration procedures - you can have saleforce perform all these actions, run apex code, and integrate with other platforms by stacking data raptors in an integration procedure.
+
+As you can see, omni studio is the basis for what salesforce is missing. It is no wonder then that salesforce bought the company who created these tools, velocity, a few years ago when customers were having success.
+
+Omnistudio is a great way to extend the basics of the salesforce platform and build true digital experiences that are smarter and better for everyone.
+
+Have fun coding, we'll see you soon.
