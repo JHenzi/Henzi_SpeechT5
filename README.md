@@ -1,58 +1,83 @@
-# **🐤 Nix-TTS**
+# T5 Speech from Microsoft
 
-### **Lightweight and End-to-end Text-to-Speech via Module-wise Distillation**
+![GNU GPL](https://badgen.net/badge/GNU%20GPL%20v3/license/orange)
 
-#### Rendi Chevi, Radityo Eko Prasojo, Alham Fikri Aji, Andros Tjandra, Sakriani Sakti
+![Huggingface](https://badgen.net/badge/icon/Huggingface?icon=huggingface&label=Transformers)
 
-This is a repository for our paper, **🐤 Nix-TTS** (Accepted to IEEE SLT 2022). We released the pretrained models, an interactive demo, and audio samples below.
+![Python](https://badgen.net/badge/icon/Python?icon=python&label=Python%203)
 
-[[📄 Paper Link](Coming Soon!)] [[🤗 Interactive Demo](https://huggingface.co/spaces/rendchevi/nix-tts)] [[📢 Audio Samples](https://anon1178.github.io/Nix-SLT-Demo/)]
+Based on their paper **[SpeechT5: Unified-Modal Encoder-Decoder Pre-Training for Spoken Language Processing](https://arxiv.org/abs/2110.07205)** and the original repository **[on Github](https://github.com/microsoft/SpeechT5/)** we bring you a simple script for using the SpeechT5 model from Microsoft using `Python` to generate speech from text.
 
-**Abstract**&nbsp;&nbsp;&nbsp;&nbsp;Several solutions for lightweight TTS have shown promising results. Still, they either rely on a hand-crafted design that reaches non-optimum size or use a neural architecture search but often suffer training costs. We present Nix-TTS, a lightweight TTS achieved via knowledge distillation to a high-quality yet large-sized, non-autoregressive, and end-to-end (vocoder-free) TTS teacher model. Specifically, we offer module-wise distillation, enabling flexible and independent distillation to the encoder and decoder module. The resulting Nix-TTS inherited the advantageous properties of being non-autoregressive and end-to-end from the teacher, yet significantly smaller in size, with only 5.23M parameters or up to 89.34\% reduction of the teacher model; it also achieves over 3.04$\times$ and 8.36$\times$ inference speedup on Intel-i7 CPU and Raspberry Pi 3B respectively and still retains a fair voice naturalness and intelligibility compared to the teacher model.
+Example code and the model card can be found on the [Huggingface model page](https://huggingface.co/microsoft/speecht5_tts).
 
-## **Getting Started with Nix-TTS**
-**Clone the `nix-tts` repository and move to its directory**
+
+
+## How it Works
+
+The script uses the [Huggingface Transformers]() library to load the model and tokenizer. The model is then used to generate speech from text. The script is very simple and can be easily modified to suit your needs. It loads the file `prompt.txt` and processes it in batches that contain **two lines of input**. For every two lines, it outputs a `wav` file to disk as `speech_#.wave` where `#` is the number of the batch. The script will also print the the results to the console as it generates the audio files.
+
+After editing `prompt.txt` to contain the text you want to generate speech from, you can run the script like this;
+
 ```bash
-git clone https://github.com/rendchevi/nix-tts.git
-cd nix-tts
+python3 app.py
 ```
 
-**Install the dependencies**
-- Install Python dependencies. We recommend `python >= 3.8`
+You'll end up with files such as;
+
+```
+speech_0.wav
+speech_1.wav
+speech_2.wav
+```
+
+If you need a combined MP3 file of all the generated audio, you can use the `mp3.py` script to combine each of the files output by the model into a single MP3 file. You can run it like this;
+
 ```bash
-pip install -r requirements.txt 
+python3 mp3.py
 ```
-- Install espeak in your device (for text tokenization).
+
+### NOTE: This script will overwrite any existing `speech_#.wav` files in the directory!
+
+> We do not archive files, we overwrite them each run to keep the script simple. If you want to keep the files, move them to another directory before running the script again.
+
+1. Write your script in `prompt.txt`
+2. Run `python3 app.py`
+3. Optionally preview `speech_#.wav` files
+4. Run `python3 mp3.py` to combine all the `speech_#.wav` files into a single `speech.mp3` file
+5. Optionally preview `speech.mp3` file
+6. Archive `prompt.txt`, `speech_#.wav` and `speech.mp3` files into their own directory.
+
+> A future version may simply create a directory for each run and archive the files there by UUID.
+
+## Requirements
+
+You'll need to install the Python libraries;
+
 ```bash
-sudo apt-get install espeak
-```
-Or follow the [official instruction](https://github.com/bootphon/phonemizer#dependencies) in case it didn't work.
-
-**Download your chosen pre-trained model [here](https://drive.google.com/drive/folders/1GbFOnJsgKHCAXySm2sTluRRikc4TAWxJ?usp=sharing)**. 
-
-| Model      | Num. of Params | Faster than real-time<sup>*</sup> (CPU Intel-i7) | Faster than real-time<sup>*</sup> (RasPi Model 3B) |
-| ----------  | -------------- | ----| ----|
-| Nix-TTS (ONNX)     | 5.23 M | 11.9x | 0.50x |
-| Nix-TTS w/ Stochastic Duration (ONNX) | 6.03 M | 10.8x | 0.50x |
-
-**<sup>*</sup>** Here we compute how much the model run faster than real-time as the inverse of Real Time Factor (RTF). The complete table of all models speedup is detailed on the paper.
-
-**And running Nix-TTS is as easy as:**
-```py
-from nix.models.TTS import NixTTSInference
-from IPython.display import Audio
-
-# Initiate Nix-TTS
-nix = NixTTSInference(model_dir = "<path_to_the_downloaded_model>")
-# Tokenize input text
-c, c_length, phoneme = nix.tokenize("Born to multiply, born to gaze into night skies.")
-# Convert text to raw speech
-xw = nix.vocalize(c, c_length)
-
-# Listen to the generated speech
-Audio(xw[0,0], rate = 22050)
+pip install -r requirements.txt
 ```
 
-## **Acknowledgement**
-- This research is fully and exclusively funded by [Kata.ai](https://kata.ai), where the authors work as part of the [Kata.ai Research Team](https://kata.ai/research).
-- Some of the complex parts of our model, as mentioned in the paper, are adapted from the original implementation of [VITS](https://github.com/jaywalnut310/vits) and [Comprehensive-Transformer-TTS](https://github.com/keonlee9420/Comprehensive-Transformer-TTS).
+This will load the following libraries - use a virtual environment if you want to keep your system clean;
+
+```bash
+transformers
+numpy
+torch
+datasets
+transformers
+accelerate
+soundfile
+pathlib
+pydub
+sentencepiece
+```
+
+## License
+
+This code is released fully under a GNU GPL v3 license. See the `LICENSE` file for more information.
+
+## Credits
+
+- [Microsoft](http://www.microsoft.com)
+- [Huggingface](https://huggingface.co)
+- [The Henzi Foundation](https://henzi.org)

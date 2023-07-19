@@ -1,3 +1,4 @@
+import pathlib
 import torch
 from datasets import load_dataset
 from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5HifiGan
@@ -8,8 +9,11 @@ processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
 model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
 vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
 
-prompt_file = '/docker/nix-tts/prompt.txt'
-output_dir = '/docker/nix-tts/'
+path = str(pathlib.Path(__file__).parent.resolve())
+
+
+prompt_file = path + '/prompt.txt'
+output_dir = path + '/'
 batch_size = 2  # Number of lines to process at a time
 
 with open(prompt_file, 'r') as file:
@@ -31,7 +35,7 @@ for i in range(num_batches):
 
     # load xvector containing speaker's voice characteristics from a dataset
     embeddings_dataset = load_dataset(
-        "Matthijs/cmu-arctic-xvectors", split="validation")
+        "Matthijs/cmu-arctic-xvectors", split="validation",)
     speaker_embeddings = torch.tensor(
         embeddings_dataset[7306]["xvector"]).unsqueeze(0)
 

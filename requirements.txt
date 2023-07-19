@@ -1,3 +1,9 @@
 numpy
-onnxruntime==1.7.0
-phonemizer==2.2.1
+torch
+datasets
+transformers
+accelerate
+soundfile
+pathlib
+pydub
+sentencepiece

@@ -1,11 +1,12 @@
 from pydub import AudioSegment
 import os
+import pathlib
 
 # Set the directory where the WAV files are located
-wav_directory = '/docker/nix-tts/'
+wav_directory = str(pathlib.Path(__file__).parent.resolve())
 
 # Set the output path and filename for the final MP3 file
-output_path = '/docker/nix-tts/'
+output_path = str(pathlib.Path(__file__).parent.resolve())
 output_filename = 'output.mp3'
 
 # Get a sorted list of WAV files in the directory
