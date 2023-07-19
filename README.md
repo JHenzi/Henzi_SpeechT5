@@ -1,10 +1,6 @@
 # T5 Speech from Microsoft
 
-![GNU GPL](https://badgen.net/badge/GNU%20GPL%20v3/license/orange)
-
-![Huggingface](https://badgen.net/badge/icon/Huggingface?icon=huggingface&label=Transformers)
-
-![Python](https://badgen.net/badge/icon/Python?icon=python&label=Python%203)
+![GNU GPL](https://badgen.net/badge/GNU%20GPL%20v3/license/orange) ![Huggingface](https://badgen.net/badge/icon/Huggingface?icon=huggingface&label=Transformers) ![Python](https://badgen.net/badge/icon/Python?icon=python&label=Python%203)
 
 Based on their paper **[SpeechT5: Unified-Modal Encoder-Decoder Pre-Training for Spoken Language Processing](https://arxiv.org/abs/2110.07205)** and the original repository **[on Github](https://github.com/microsoft/SpeechT5/)** we bring you a simple script for using the SpeechT5 model from Microsoft using `Python` to generate speech from text.
 
@@ -74,7 +70,9 @@ sentencepiece
 
 ## License
 
-This code is released fully under a GNU GPL v3 license. See the `LICENSE` file for more information.
+This code is released fully under a GNU GPL v3 license. 
+
+[See the Free Software Foundation's page for more information](https://www.gnu.org/licenses/gpl-3.0.html#license-text).
 
 ## Credits
 
